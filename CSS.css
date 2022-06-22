@@ -1,15 +1,162 @@
-.chessboard TD {
-    width: 80px;
-    height: 80px;
-    padding: 5px;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.cardPosition {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 2%;
+}
+
+#topCard {
+    position: absolute;
+    width: 25%;
+    height: 70vh;
+    border: rgb(82, 82, 82) 5px solid;
+    background-color: rgb(255, 200, 61);
+    border-radius: 25px;
+    z-index: 2;
+    animation-duration: 5s;
+}
+.topCardTop {
+    position: relative;
+    width: 90%;
+    height: 10%;
+    border: rgb(167, 131, 0) 3px solid;
+    background-color: rgba(152, 152, 152, 0.712);
+    border-radius: 25px;
+}
+#topCardTopText {
+    position: relative;
+    font-size: 50px;
+}
+
+.topCardBottom {
+    position: relative;
+    width: 90%;
+    height: 82%;
+    background-color: transparent;
+    border-radius: 25px;
+}
+#topCardBottomText {
+    position: relative;
+    font-size: 45px;
+    top: 50px;
+    color: rgb(0, 0, 0);
+    letter-spacing: 2px;
+}
+
+@keyframes topCardFly {
+    0% {
+        top: 0%
+    }
+    100% {
+        top: -80%
+    }
+}
+
+
+@keyframes topCardFall {
+    0% {
+        top: 0%
+    }
+    100% {
+        top: 120%
+    }
+}
+
+#bottomCard {
+    position: absolute;
+    width: 25%;
+    height: 70vh;
+    border: rgb(82, 82, 82) 5px solid;
+    background-color: rgb(255, 200, 61);
+    border-radius: 25px;
+    z-index: 1;
+    animation-duration: 5s;
+}
+.bottomCardTop {
+    position: relative;
+    width: 90%;
+    height: 10%;
+    border: rgb(167, 131, 0) 3px solid;
+    background-color: rgba(152, 152, 152, 0.712);
+    border-radius: 25px;
+}
+#bottomCardTopText {
+    position: relative;
+    font-size: 50px;
+}
+
+.bottomCardBottom {
+    position: relative;
+    width: 90%;
+    height: 82%;
+    background-color: transparent;
+    border-radius: 25px;
+}
+#bottomCardBottomText {
+    position: relative;
+    font-size: 45px;
+    top: 50px;
+    color: rgb(0, 0, 0);
+    letter-spacing: 2px;
+}
+
+.bin {
+    position: absolute;
+    height: 25%;
+    width: 25%;
+    border: rgb(23, 130, 95) 3px solid;
+    background-color: rgb(13, 203, 140, 0.8);
+    border-radius: 20px;
+    bottom: 25%;
+    left: 10%
+}
+
+.apply {
+    position: absolute;
+    height: 25%;
+    width: 25%;
+    border: rgb(22, 115, 84) 3px solid;
+    background-color: rgb(13, 203, 140, 0.8);
+    border-radius: 20px;
+    bottom: 25%;
+    right: 10%
+}
+.buttonText {
+    position: relative;
+    font-size: 60px;
+    font-family: Anton;
+    letter-spacing: 5px;
+}
+
+#bottomBlock {
+    position: absolute;
+    height: 20%;
+    width: 80%;
+    border: rgb(22, 115, 84) 3px solid;
+    background-color: rgb(13, 203, 140, 0.8);
+    bottom: 2.5%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 50px;
+}
+#bottomBlockText {
     font-size: 30px;
-  }
-  
-  .black {
-    background-color: #a2ff00;
-  }
-  
-  .white {
-    background-color: #00d0ff;
-  }
+    top: 10%
+}
+
+.clickable {
+    cursor: pointer;
+}

@@ -1,138 +1,144 @@
-function Aselected() {
-    document.getElementById("card").innerHTML = document.getElementById("1").innerHTML
-}
-function Bselected() {
-    document.getElementById("card").innerHTML = document.getElementById("2").innerHTML
-}
-function Cselected() {
-    document.getElementById("card").innerHTML = document.getElementById("3").innerHTML
-}
-function Dselected() {
-    document.getElementById("card").innerHTML = document.getElementById("4").innerHTML
-}
-function Eselected() {
-    document.getElementById("card").innerHTML = document.getElementById("5").innerHTML
-}
-function Fselected() {
-    document.getElementById("card").innerHTML = document.getElementById("6").innerHTML
-}
-function Gselected() {
-    document.getElementById("card").innerHTML = document.getElementById("7").innerHTML
-}
-function Hselected() {
-    document.getElementById("card").innerHTML = document.getElementById("8").innerHTML
-}
-function Iselected() {
-    document.getElementById("card").innerHTML = document.getElementById("9").innerHTML
+var whatCard = "top"
+var startOfGame = true
+
+var statements = ["1"]
+
+function start() {
+    if (startOfGame === true) {
+        document.getElementById("bin").innerHTML = "Bin"
+        document.getElementById("bin").setAttribute( "onClick", "javascript: bin();" );
+        document.getElementById("apply").innerHTML = "Apply"
+        document.getElementById("apply").setAttribute( "onClick", "javascript: apply();" );
+        bin()
+        startOfGame = false
+
+        // AHHHHHHHHHH BUGS :[
+    }
+        document.getElementById("bottomBlockText").innerHTML = statements
 }
 
-function A1() {
-    document.getElementById("A1text").innerHTML = document.getElementById("card").innerHTML
+function topCardBin() {
+    document.getElementById("topCard").style.animationName = "topCardFly"
+    whatCard = "bottom"
+    setTimeout(function(){
+        document.getElementById("topCard").style.animationName = ""
+    }, 3400)
 }
-function A2() {
-    document.getElementById("A2text").innerHTML = document.getElementById("card").innerHTML
-}
-function A3() {
-    document.getElementById("A3text").innerHTML = document.getElementById("card").innerHTML
-}
-function B1() {
-    document.getElementById("B1text").innerHTML = document.getElementById("card").innerHTML
-}
-function B2() {
-    document.getElementById("B2text").innerHTML = document.getElementById("card").innerHTML
-}
-function B3() {
-    document.getElementById("B3text").innerHTML = document.getElementById("card").innerHTML
-}
-function C1() {
-    document.getElementById("C1text").innerHTML = document.getElementById("card").innerHTML
-}
-function C2() {
-    document.getElementById("C2text").innerHTML = document.getElementById("card").innerHTML
-}
-function C3() {
-    document.getElementById("C3text").innerHTML = document.getElementById("card").innerHTML
+function bottomCardBin() {
+    document.getElementById("bottomCard").style.animationName = "topCardFly"
+    whatCard = "top"
+    setTimeout(function(){
+        document.getElementById("bottomCard").style.animationName = ""
+    }, 3400)
 }
 
-function A1a() {
-    if (document.getElementById("A1text1").innerHTML === " ") {
-        document.getElementById("A1text1").innerHTML = document.getElementById("card").innerHTML
+function topCardApply() {
+    document.getElementById("topCard").style.animationName = "topCardFall"
+    whatCard = "bottom"
+    setTimeout(function(){
+        document.getElementById("topCard").style.animationName = ""
+    }, 3400)
+}
+function bottomCardApply() {
+    document.getElementById("bottomCard").style.animationName = "topCardFall"
+    whatCard = "top"
+    setTimeout(function(){
+        document.getElementById("bottomCard").style.animationName = ""
+    }, 3400)
+}
+
+
+function bin() {
+    if (whatCard === "top") {
+        topCardBin()
+        setTimeout(function(){
+            document.getElementById("bottomCard").style.zIndex = "2"
+            document.getElementById("topCard").style.zIndex = "1"
+        },3000);
+        var symbolNum = Math.floor(Math.random() * 4)
+        if (symbolNum === 0) {
+            var symbol = "+"
+        }
+        else if (symbolNum === 1) {
+            var symbol = "-"
+        }
+        else if (symbolNum === 2) {
+            var symbol = "×"
+        }
+        else if (symbolNum === 3) {
+            var symbol = "÷"
+        }
+        var num = Math.floor(Math.random() * 101)
+        document.getElementById("bottomCardBottomText").innerHTML = symbol + num
     }
     else {
-        document.getElementById("card").innerHTML = document.getElementById("A1text1").innerHTML
-        document.getElementById("A1text1").innerHTML = " "
+        bottomCardBin()
+        setTimeout(function(){
+            document.getElementById("bottomCard").style.zIndex = "1"
+            document.getElementById("topCard").style.zIndex = "2"
+        },3000);
+        var symbolNum = Math.floor(Math.random() * 4)
+        if (symbolNum === 0) {
+            var symbol = "+"
+        }
+        else if (symbolNum === 1) {
+            var symbol = "-"
+        }
+        else if (symbolNum === 2) {
+            var symbol = "×"
+        }
+        else if (symbolNum === 3) {
+            var symbol = "÷"
+        }
+        var num = Math.floor(Math.random() * 101)
+        document.getElementById("topCardBottomText").innerHTML = symbol + num
     }
 }
-function A2a() {
-    if (document.getElementById("A2text1").innerHTML === " ") {
-        document.getElementById("A2text1").innerHTML = document.getElementById("card").innerHTML
+function apply() {
+    if (whatCard === "top") {
+        topCardApply()
+        setTimeout(function(){
+            document.getElementById("bottomCard").style.zIndex = "2"
+            document.getElementById("topCard").style.zIndex = "1"
+        },3000);
+        var symbolNum = Math.floor(Math.random() * 4)
+        if (symbolNum === 0) {
+            var symbol = "+"
+        }
+        else if (symbolNum === 1) {
+            var symbol = "-"
+        }
+        else if (symbolNum === 2) {
+            var symbol = "*"
+        }
+        else if (symbolNum === 3) {
+            var symbol = "/"
+        }
+        var num = Math.floor(Math.random() * 101)
+        document.getElementById("bottomCardBottomText").innerHTML = symbol + num
+        statements.push(document.getElementById("topCardBottomText").innerHTML)
     }
     else {
-        document.getElementById("card").innerHTML = document.getElementById("A2text1").innerHTML
-        document.getElementById("A2text1").innerHTML = " "
-    }
-}
-function A3a() {
-    if (document.getElementById("A3text1").innerHTML === " ") {
-        document.getElementById("A3text1").innerHTML = document.getElementById("card").innerHTML
-    }
-    else {
-        document.getElementById("card").innerHTML = document.getElementById("A3text1").innerHTML
-        document.getElementById("A3text1").innerHTML = " "
-    }
-}
-function B1a() {
-    if (document.getElementById("B1text1").innerHTML === " ") {
-        document.getElementById("B1text1").innerHTML = document.getElementById("card").innerHTML
-    }
-    else {
-        document.getElementById("card").innerHTML = document.getElementById("B1text1").innerHTML
-        document.getElementById("B1text1").innerHTML = " "
-    }
-}
-function B2a() {
-    if (document.getElementById("B2text1").innerHTML === " ") {
-        document.getElementById("B2text1").innerHTML = document.getElementById("card").innerHTML
-    }
-    else {
-        document.getElementById("card").innerHTML = document.getElementById("B2text1").innerHTML
-        document.getElementById("B2text1").innerHTML = " "
-    }
-}
-function B3a() {
-    if (document.getElementById("B3text1").innerHTML === " ") {
-        document.getElementById("B3text1").innerHTML = document.getElementById("card").innerHTML
-    }
-    else {
-        document.getElementById("card").innerHTML = document.getElementById("B3text1").innerHTML
-        document.getElementById("B3text1").innerHTML = " "
-    }
-}
-function C1a() {
-    if (document.getElementById("C1text1").innerHTML === " ") {
-        document.getElementById("C1text1").innerHTML = document.getElementById("card").innerHTML
-    }
-    else {
-        document.getElementById("card").innerHTML = document.getElementById("C1text1").innerHTML
-        document.getElementById("C1text1").innerHTML = " "
-    }
-    
-}
-function C2a() {
-    if (document.getElementById("C2text1").innerHTML === " ") {
-        document.getElementById("C2text1").innerHTML = document.getElementById("card").innerHTML
-    }
-    else {
-        document.getElementById("card").innerHTML = document.getElementById("C2text1").innerHTML
-        document.getElementById("C2text1").innerHTML = " "
-    }
-}
-function C3a() {
-    if (document.getElementById("C3text1").innerHTML === " ") {
-        document.getElementById("C3text1").innerHTML = document.getElementById("card").innerHTML
-    }
-    else {
-        document.getElementById("card").innerHTML = document.getElementById("C3text1").innerHTML
-        document.getElementById("C3text1").innerHTML = " "
+        bottomCardApply()
+        setTimeout(function(){
+            document.getElementById("bottomCard").style.zIndex = "1"
+            document.getElementById("topCard").style.zIndex = "2"
+        },3000);
+        var symbolNum = Math.floor(Math.random() * 4)
+        if (symbolNum === 0) {
+            var symbol = "+"
+        }
+        else if (symbolNum === 1) {
+            var symbol = "-"
+        }
+        else if (symbolNum === 2) {
+            var symbol = "*"
+        }
+        else if (symbolNum === 3) {
+            var symbol = "/"
+        }
+        var num = Math.floor(Math.random() * 101)
+        document.getElementById("topCardBottomText").innerHTML = symbol + num
+        statements.push(document.getElementById("bottomCardBottomText").innerHTML)
     }
 }
