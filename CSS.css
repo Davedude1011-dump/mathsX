@@ -9,6 +9,7 @@ body{
     height: 100vh;
     width: 100%;
     overflow: hidden;
+    background-image: linear-gradient(90deg,rgb(0, 112, 210), rgb(214, 32, 0))
 }
 
 .cardPosition {
@@ -118,7 +119,7 @@ body{
     height: 25%;
     width: 25%;
     border: rgb(23, 130, 95) 3px solid;
-    background-color: rgb(13, 203, 140, 0.8);
+    background-color: rgb(13, 203, 140, 0.3);
     border-radius: 20px;
     bottom: 25%;
     left: 10%
@@ -129,7 +130,7 @@ body{
     height: 25%;
     width: 25%;
     border: rgb(22, 115, 84) 3px solid;
-    background-color: rgb(13, 203, 140, 0.8);
+    background-color: rgb(13, 203, 140, 0.3);
     border-radius: 20px;
     bottom: 25%;
     right: 10%
@@ -146,7 +147,7 @@ body{
     height: 20%;
     width: 80%;
     border: rgb(22, 115, 84) 3px solid;
-    background-color: rgb(13, 203, 140, 0.8);
+    background-color: rgb(13, 203, 140, 0.3);
     bottom: 2.5%;
     left: 50%;
     transform: translate(-50%);
