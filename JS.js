@@ -1,7 +1,10 @@
 var whatCard = "top"
 var startOfGame = true
 
-var statements = ["1"]
+var cardCount = 0
+
+var statements = [1]
+var equation = 0
 
 function start() {
     if (startOfGame === true) {
@@ -14,7 +17,11 @@ function start() {
 
         // AHHHHHHHHHH BUGS :[
     }
-        document.getElementById("bottomBlockText").innerHTML = statements
+        document.getElementById("bottomBlockText").innerHTML = equation
+        setTimeout(function(){
+            document.getElementById("cardCountText1").innerHTML = cardCount
+            document.getElementById("cardCountText2").innerHTML = cardCount
+        }, 1000)
 }
 
 function topCardBin() {
@@ -56,6 +63,7 @@ function bin() {
             document.getElementById("topCard").style.zIndex = "1"
         },3000);
         var symbolNum = Math.floor(Math.random() * 4)
+        var num = Math.floor(Math.random() * 101)
         if (symbolNum === 0) {
             var symbol = "+"
         }
@@ -63,12 +71,13 @@ function bin() {
             var symbol = "-"
         }
         else if (symbolNum === 2) {
-            var symbol = "×"
+            var symbol = "*"
         }
         else if (symbolNum === 3) {
-            var symbol = "÷"
+            if (num < 10) {
+            var symbol = "/"
+            }
         }
-        var num = Math.floor(Math.random() * 101)
         document.getElementById("bottomCardBottomText").innerHTML = symbol + num
     }
     else {
@@ -78,23 +87,27 @@ function bin() {
             document.getElementById("topCard").style.zIndex = "2"
         },3000);
         var symbolNum = Math.floor(Math.random() * 4)
+        var num = Math.floor(Math.random() * 101)
         if (symbolNum === 0) {
             var symbol = "+"
         }
         else if (symbolNum === 1) {
             var symbol = "-"
         }
-        else if (symbolNum === 2) {
-            var symbol = "×"
+        else if (symbolNum === 2 & num <= 25) {
+            var symbol = "*"
         }
-        else if (symbolNum === 3) {
-            var symbol = "÷"
+        else if (symbolNum === 3 & num <= 15) {
+            var symbol = "/"
         }
-        var num = Math.floor(Math.random() * 101)
+        else {
+            var symbol = "+"
+        }
         document.getElementById("topCardBottomText").innerHTML = symbol + num
     }
 }
 function apply() {
+    cardCount += 1
     if (whatCard === "top") {
         topCardApply()
         setTimeout(function(){
@@ -102,21 +115,26 @@ function apply() {
             document.getElementById("topCard").style.zIndex = "1"
         },3000);
         var symbolNum = Math.floor(Math.random() * 4)
+        var num = Math.floor(Math.random() * 101)
         if (symbolNum === 0) {
             var symbol = "+"
         }
         else if (symbolNum === 1) {
             var symbol = "-"
         }
-        else if (symbolNum === 2) {
+        else if (symbolNum === 2 & num <= 25) {
             var symbol = "*"
         }
-        else if (symbolNum === 3) {
+        else if (symbolNum === 3 & num <= 15) {
             var symbol = "/"
         }
-        var num = Math.floor(Math.random() * 101)
+        else {
+            var symbol = "+"
+        }
         document.getElementById("bottomCardBottomText").innerHTML = symbol + num
         statements.push(document.getElementById("topCardBottomText").innerHTML)
+        equation = statements.reduce((a, b) => a + b)
+
     }
     else {
         bottomCardApply()
@@ -125,20 +143,25 @@ function apply() {
             document.getElementById("topCard").style.zIndex = "2"
         },3000);
         var symbolNum = Math.floor(Math.random() * 4)
+        var num = Math.floor(Math.random() * 101)
         if (symbolNum === 0) {
             var symbol = "+"
         }
         else if (symbolNum === 1) {
             var symbol = "-"
         }
-        else if (symbolNum === 2) {
+        else if (symbolNum === 2 & num <= 25) {
             var symbol = "*"
         }
-        else if (symbolNum === 3) {
+        else if (symbolNum === 3 & num <= 15) {
             var symbol = "/"
         }
-        var num = Math.floor(Math.random() * 101)
+        else {
+            var symbol = "+"
+        }
         document.getElementById("topCardBottomText").innerHTML = symbol + num
         statements.push(document.getElementById("bottomCardBottomText").innerHTML)
+        equation = statements.reduce((a, b) => a + b)
+        console.log(equation)
     }
 }
